@@ -1,30 +1,24 @@
-<div class="text-center mx-auto">
-  <div class="wrapper-five-and-rest">
-    <div class="rest-of-five d-inline-block">
-      <div class="wrapper-three-and-rest">
-        <div class="rest-of-three">
-          <div class="wrapper-two-and-rest d-block">
-            <div class="two d-inline-block align-top size2 square">
-              <app-clock-element id="2"></app-clock-element>
-            </div>
-            <div class="rest-of-two d-inline-block">
-              <div class="wrapper-one-and-rest d-block">
-                <div class="one size1 square">
-                  <app-clock-element id="1.1"></app-clock-element>
-                </div>
-                <div class="one size1 square">
-                  <app-clock-element id="1.2"></app-clock-element>
-                </div>
-              </div>
-            </div>
+<div class="container">
+  <div class="d-flex border border-2 border-dark-subtle">
+    <div class="flex-grow-1">
+      <div class="d-flex">
+        <div class="w-66 align-top">
+          <app-clock-element id="2"></app-clock-element>
+        </div>
+        <div class="flex-grow-1">
+          <div class="square">
+            <app-clock-element id="1.1"></app-clock-element>
+          </div>
+          <div class="square">
+            <app-clock-element id="1.2"></app-clock-element>
           </div>
         </div>
-        <div class="three size3 square">
-          <app-clock-element id="3"></app-clock-element>
-        </div>
+      </div>
+      <div class="square">
+        <app-clock-element id="3"></app-clock-element>
       </div>
     </div>
-    <div class="five d-inline-block align-top size5 square">
+    <div class="w-62 align-top square">
       <app-clock-element id="5"></app-clock-element>
     </div>
   </div>
