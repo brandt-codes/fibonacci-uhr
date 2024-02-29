@@ -1,0 +1,37 @@
+.clock-wrapper {
+  //width: 80%;
+}
+
+.square {
+  aspect-ratio: 1 / 1;
+}
+
+.one {
+  background: #00ffff;
+  width: 100%;
+}
+
+.two {
+  background: #ffff00;
+  width: 66.6%;
+}
+.rest-of-two {
+  width: 33.3%;
+}
+
+
+.three {
+  background: #ff00ff;
+  width: 100%;
+}
+.rest-of-three {
+  width: 100%;
+}
+
+.five {
+  background: #ff0000;
+  width: 62.5%;
+}
+.rest-of-five {
+  width: 37.5%;
+}
