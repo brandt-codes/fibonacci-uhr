@@ -12,10 +12,6 @@ import { NgbInputDatepicker, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class AppComponent {
   title = 'fibonacci-uhr';
 
-  constructor(private modalService: NgbModal) {
-  }
-
-  public open(modal: any): void {
-    this.modalService.open(modal);
+  constructor() {
   }
 }
