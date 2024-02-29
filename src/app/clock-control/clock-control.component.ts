@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './clock-control.component.scss'
 })
 export class ClockControlComponent {
-
+  public hour: number = 0;
+  public minute: number = 0;
 }
