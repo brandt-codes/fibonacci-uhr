@@ -2,6 +2,7 @@ import { ClockControlComponent } from './clock-control.component';
 
 describe('ClockControlComponent', () => {
   let component: ClockControlComponent;
+
   beforeEach(() => {
     component = new ClockControlComponent();
   })
@@ -9,6 +10,7 @@ describe('ClockControlComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 
   describe('Change Hour', () => {
     it('should set hour to selected value', () => {
@@ -27,6 +29,7 @@ describe('ClockControlComponent', () => {
     });
   });
 
+
   describe('Change Minute', () => {
     it('should set minute to selected value', () => {
       component.onSelectMinute({target: {value: '3'}});
@@ -43,6 +46,7 @@ describe('ClockControlComponent', () => {
       expect(component.displayMinute).toBe('04');
     });
   });
+
 
   describe('Button - Plus', () => {
       it('should add 5 minutes on button + action', () => {
@@ -80,6 +84,7 @@ describe('ClockControlComponent', () => {
     });
   });
 
+
   describe('Button - Minus', () => {
     it('should subtract 5 minutes on button minus action', () => {
       component.minute = 10;
@@ -109,6 +114,18 @@ describe('ClockControlComponent', () => {
     });
   });
 
-  // TODO AVB: call a Service - write current values to store!
 
+  describe('Parent communication', () => {
+      it('should emit hourEmitter to output selected hour', () => {
+        component.hourEmitter.emit = jest.fn() as any;
+        component.onSelectHour({target: {value: '3'}});
+        expect(component.hourEmitter.emit).toHaveBeenCalledWith(3);
+      });
+
+    it('should emit minuteEmitter to output selected minute', () => {
+      component.minuteEmitter.emit = jest.fn() as any;
+      component.onSelectMinute({target: {value: '15'}});
+      expect(component.minuteEmitter.emit).toHaveBeenCalledWith(15);
+    });
+  });
 });

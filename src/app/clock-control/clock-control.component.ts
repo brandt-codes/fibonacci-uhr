@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -11,6 +11,10 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './clock-control.component.scss'
 })
 export class ClockControlComponent {
+  @Output()
+  hourEmitter = new EventEmitter<number>();
+  @Output()
+  minuteEmitter = new EventEmitter<number>();
   public hour: number = 0;
   public minute: number = 0;
   public displayHour: string = '00';
@@ -20,7 +24,7 @@ export class ClockControlComponent {
     const newHour = Number(event?.target?.value);
     if (newHour && newHour >= 0 && newHour <= 12) {
       this.hour = newHour;
-      this.displayHour = this.getDisplayFormat(newHour);
+      this.updateUIValues();
     }
   }
 
@@ -28,7 +32,7 @@ export class ClockControlComponent {
     const newMinute = Number(event?.target?.value);
     if (newMinute && newMinute >= 0 && newMinute <= 55) {
       this.minute = newMinute;
-      this.displayMinute = this.getDisplayFormat(newMinute);
+      this.updateUIValues();
     }
   }
 
@@ -43,7 +47,7 @@ export class ClockControlComponent {
         this.hour = 0;
       }
     }
-    this.updateDisplayValues();
+    this.updateUIValues();
   }
 
   public minus5Minutes(): void {
@@ -57,15 +61,24 @@ export class ClockControlComponent {
         this.hour = 12;
       }
     }
-    this.updateDisplayValues();
+    this.updateUIValues();
   }
 
   private getDisplayFormat(num: number): string {
     return num <= 9 ? `0${num.toString()}` : num.toString();
   }
 
-  private updateDisplayValues(): void {
+  private updateUIValues(): void {
     this.displayMinute = this.getDisplayFormat(this.minute);
     this.displayHour = this.getDisplayFormat(this.hour);
+    this.sendHourChangeToParent(this.hour);
+    this.sendMinuteChangeToParent(this.minute);
+  }
+
+  private sendHourChangeToParent(newHour: number): void {
+    this.hourEmitter.emit(newHour);
+  }
+  private sendMinuteChangeToParent(newMinute: number): void {
+    this.minuteEmitter.emit(newMinute);
   }
 }
