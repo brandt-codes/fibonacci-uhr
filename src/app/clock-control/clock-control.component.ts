@@ -22,7 +22,7 @@ export class ClockControlComponent {
 
   public onSelectHour(event: any): void {
     const newHour = Number(event?.target?.value);
-    if (newHour && newHour >= 0 && newHour <= 12) {
+    if (newHour !=null && newHour >= 0 && newHour <= 12) {
       this.hour = newHour;
       this.updateUIValues();
     }
@@ -30,7 +30,7 @@ export class ClockControlComponent {
 
   public onSelectMinute(event: any): void {
     const newMinute = Number(event?.target?.value);
-    if (newMinute && newMinute >= 0 && newMinute <= 55) {
+    if (newMinute !=null && newMinute >= 0 && newMinute <= 55) {
       this.minute = newMinute;
       this.updateUIValues();
     }

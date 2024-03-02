@@ -27,6 +27,13 @@ describe('ClockControlComponent', () => {
       component.onSelectHour({target: {value: '3'}});
       expect(component.displayHour).toBe('03');
     });
+
+    it('should accept 0 hour', () => {
+      component.onSelectHour({target: {value: '1'}});
+      component.onSelectHour({target: {value: '0'}});
+      expect(component.hour).toBe(0);
+      expect(component.displayHour).toBe('00');
+    });
   });
 
 
@@ -44,6 +51,13 @@ describe('ClockControlComponent', () => {
     it('should add a leading 0 to "displayMinute" if selected hour is < 10', () => {
       component.onSelectMinute({target: {value: '4'}});
       expect(component.displayMinute).toBe('04');
+    });
+
+    it('should accept 0 minutes', () => {
+      component.onSelectMinute({target: {value: '1'}});
+      component.onSelectMinute({target: {value: '0'}});
+      expect(component.minute).toBe(0);
+      expect(component.displayMinute).toBe('00');
     });
   });
 
@@ -73,7 +87,6 @@ describe('ClockControlComponent', () => {
       component.plus5Minutes();
       expect(component.hour).toBe(2);
     });
-
 
     it('should reset hour when hour overflow reached - on plus', () => {
       component.hour = 12;
