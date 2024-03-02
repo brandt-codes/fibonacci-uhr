@@ -3,23 +3,33 @@
     <div class="flex-grow-1">
       <div class="d-flex">
         <div class="w-66 align-top">
-          <app-clock-element id="2"></app-clock-element>
+          <app-clock-element [isHourSet]="activeHourMap.get('2') || false"
+                             [isMinuteSet]="activeHourMap.get('2') || false"
+          ></app-clock-element>
         </div>
         <div class="flex-grow-1">
           <div class="square">
-            <app-clock-element id="1.1"></app-clock-element>
+            <app-clock-element [isHourSet]="activeHourMap.get('1.1') || false"
+                               [isMinuteSet]="activeHourMap.get('1.1') || false"
+            ></app-clock-element>
           </div>
           <div class="square">
-            <app-clock-element id="1.2"></app-clock-element>
+            <app-clock-element [isHourSet]="activeHourMap.get('1.2') || false"
+                               [isMinuteSet]="activeHourMap.get('1.2') || false"
+            ></app-clock-element>
           </div>
         </div>
       </div>
       <div class="square">
-        <app-clock-element id="3"></app-clock-element>
+        <app-clock-element [isHourSet]="activeHourMap.get('3') || false"
+                           [isMinuteSet]="activeHourMap.get('3') || false"
+        ></app-clock-element>
       </div>
     </div>
     <div class="w-62 align-top square">
-      <app-clock-element id="5"></app-clock-element>
+      <app-clock-element [isHourSet]="activeHourMap.get('5') || false"
+                         [isMinuteSet]="activeHourMap.get('5') || false"
+      ></app-clock-element>
     </div>
   </div>
 </div>
