@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ClockElementComponent } from './clock-element/clock-element.component';
 
 @Component({
@@ -10,7 +10,11 @@ import { ClockElementComponent } from './clock-element/clock-element.component';
   templateUrl: './clock.component.html',
   styleUrl: './clock.component.scss'
 })
-export class ClockComponent {
+export class ClockComponent implements OnChanges {
+  @Input()
+  public inputHour: number = 0;
+  @Input()
+  public inputMinute: number = 0;
   public activeHourMap:Map<string, boolean> = new Map();
   public activeMinuteMap:Map<string, boolean> = new Map();
   private numberToBoxMap: Map<number, string[]> = new Map([
@@ -28,6 +32,11 @@ export class ClockComponent {
     [11, ["5", "3", "2", "1.1"]],    // 11 hour or 55 minute
     [12, ["5", "3", "2", "1.1", "1.2"]], // 12 hours 60 minutes (what only makes sense without "minutes")
   ]);
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.setHour(this.inputHour);
+    this.setMinute(this.inputMinute);
+  }
 
   public setHour(hour: number): void {
     this.activeHourMap.clear();

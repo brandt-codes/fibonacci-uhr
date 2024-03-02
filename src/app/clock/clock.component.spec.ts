@@ -200,4 +200,46 @@ describe('ClockComponent', () => {
       expect(component.activeMinuteMap.get('5')).toBe(undefined);
     });
   });
+
+  describe('Get Input hours and minutes', () => {
+    it('should set correct hours when received via input (onChange)', () => {
+      component.inputHour = 5;
+      component.ngOnChanges({});
+      expect(component.activeHourMap.get('5')).toBe(true);
+    });
+
+    it('should set correct minute when received via input (onChange)', () => {
+      component.inputMinute = 20;
+      component.ngOnChanges({});
+      expect(component.activeMinuteMap.get('3')).toBe(true);
+      expect(component.activeMinuteMap.get('1.1')).toBe(true);
+    });
+  });
+
+  describe('Clear Mapping', () => {
+    it('should reset hours when new value is set', () => {
+      component.inputHour = 5;
+      component.ngOnChanges({});
+
+      component.inputHour = 4;
+      component.ngOnChanges({});
+
+      expect(component.activeHourMap.get('3')).toBe(true);
+      expect(component.activeHourMap.get('1.1')).toBe(true);
+      expect(component.activeHourMap.get('5')).toBe(undefined);
+    });
+
+    it('should reset minutes when new value is set', () => {
+      component.inputMinute = 45;
+      component.ngOnChanges({});
+
+      component.inputMinute = 10;
+      component.ngOnChanges({});
+
+      expect(component.activeMinuteMap.get('2')).toBe(true);
+      expect(component.activeMinuteMap.get('5')).toBe(undefined);
+      expect(component.activeMinuteMap.get('3')).toBe(undefined);
+      expect(component.activeMinuteMap.get('1.1')).toBe(undefined);
+    });
+  });
 });

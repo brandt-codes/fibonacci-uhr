@@ -14,4 +14,13 @@ import { ClockControlComponent } from '../clock-control/clock-control.component'
 })
 export class MainComponent {
 
+  public outputHour: number = 0;
+  public outputMinute: number = 0;
+
+  public receiveHourChange(newHour: number): void {
+    this.outputHour = newHour;
+  }
+  public receiveMinuteChange(newMinute: number): void {
+    this.outputMinute = newMinute;
+  }
 }
