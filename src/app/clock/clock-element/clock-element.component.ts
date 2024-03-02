@@ -22,8 +22,10 @@ export class ClockElementComponent implements OnChanges {
   public colorMinute: string = '#0000ff';
   @Input()
   public colorCombined: string = '#00ff00';
+  @Input()
+  public disabledColor: string = '#ffffff';
 
-  public calculatedColor: string = '#ffffff';
+  public calculatedColor: string = this.disabledColor;
 
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -33,6 +35,8 @@ export class ClockElementComponent implements OnChanges {
       this.calculatedColor = this.colorMinute;
     } else if (this.isHourSet && this.isMinuteSet) {
       this.calculatedColor = this.colorCombined;
+    } else {
+      this.calculatedColor = this.disabledColor;
     }
   }
 }
