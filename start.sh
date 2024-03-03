@@ -19,7 +19,7 @@ else
   read -p "Start local http-server (y/N)? " start_server
 
   if [ "$start_server" = "y" ] || [ "$start_server" = "Y" ]; then
-    echo "x has the value 'valid'"
+    echo "starting http_server"
     cd "dist/fibonacci-uhr/browser"
     http-server
   else
