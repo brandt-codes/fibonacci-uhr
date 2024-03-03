@@ -11,6 +11,21 @@ describe('ClockControlComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  describe('Init values on first load', () => {
+    it('should set correct hour on start', () => {
+        component.initialHour = 3;
+        component.ngOnInit();
+        expect(component.hour).toBe(3);
+        expect(component.displayHour).toBe("03");
+      });
+
+    it('should set correct minute on start', () => {
+      component.initialMinute = 15;
+      component.ngOnInit();
+      expect(component.minute).toBe(15);
+      expect(component.displayMinute).toBe("15");
+    });
+  });
 
   describe('Change Hour', () => {
     it('should set hour to selected value', () => {

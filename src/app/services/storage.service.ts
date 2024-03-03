@@ -14,4 +14,14 @@ export class StorageService {
   public saveMinute(minute: number): void {
     // TODO AVB: TBD
   }
+
+  public getHour(): number {
+    // TODO AVB: TBD
+    return 4;
+  }
+
+  public getMinute(): number {
+    // TODO AVB: TBD
+    return 15;
+  }
 }

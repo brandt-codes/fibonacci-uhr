@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -10,30 +10,34 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './clock-control.component.html',
   styleUrl: './clock-control.component.scss'
 })
-export class ClockControlComponent {
+export class ClockControlComponent implements OnInit {
+  @Input()
+  public initialHour = 0;
+  @Input()
+  public initialMinute = 0;
   @Output()
-  hourEmitter = new EventEmitter<number>();
+  public hourEmitter = new EventEmitter<number>();
   @Output()
-  minuteEmitter = new EventEmitter<number>();
+  public minuteEmitter = new EventEmitter<number>();
+
   public hour: number = 0;
   public minute: number = 0;
   public displayHour: string = '00';
   public displayMinute: string = '00';
 
+  public ngOnInit(): void {
+    this.setHour(this.initialHour);
+    this.setMinute(this.initialMinute);
+  }
+
   public onSelectHour(event: any): void {
     const newHour = Number(event?.target?.value);
-    if (newHour !=null && newHour >= 0 && newHour <= 12) {
-      this.hour = newHour;
-      this.updateUIValues();
-    }
+    this.setHour(newHour);
   }
 
   public onSelectMinute(event: any): void {
     const newMinute = Number(event?.target?.value);
-    if (newMinute !=null && newMinute >= 0 && newMinute <= 55) {
-      this.minute = newMinute;
-      this.updateUIValues();
-    }
+    this.setMinute(newMinute);
   }
 
   public plus5Minutes(): void {
@@ -62,6 +66,19 @@ export class ClockControlComponent {
       }
     }
     this.updateUIValues();
+  }
+
+  private setHour(newHour: number): void {
+    if (newHour !=null && newHour >= 0 && newHour <= 12) {
+      this.hour = newHour;
+      this.updateUIValues();
+    }
+  }
+  private setMinute(newMinute: number): void {
+    if (newMinute !=null && newMinute >= 0 && newMinute <= 55) {
+      this.minute = newMinute;
+      this.updateUIValues();
+    }
   }
 
   private getDisplayFormat(num: number): string {
