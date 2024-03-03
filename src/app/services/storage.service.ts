@@ -8,20 +8,30 @@ export class StorageService {
   constructor() { }
 
   public saveHour(hour: number): void {
-    // TODO AVB: TBD
+    localStorage.setItem('fib-hour', hour.toString());
   }
 
   public saveMinute(minute: number): void {
-    // TODO AVB: TBD
+    localStorage.setItem('fib-minute', minute.toString());
   }
 
   public getHour(): number {
-    // TODO AVB: TBD
-    return 4;
+    const hourFromStore = Number(localStorage.getItem('fib-hour'));
+    const castedNumber = Number(hourFromStore);
+    if (!isNaN(castedNumber) && castedNumber >= 0 && castedNumber <= 12) {
+      return castedNumber;
+    } else {
+      return 0;
+    }
   }
 
   public getMinute(): number {
-    // TODO AVB: TBD
-    return 15;
+    const minuteFromStore = Number(localStorage.getItem('fib-minute'));
+    const castedNumber = Number(minuteFromStore);
+    if (!isNaN(castedNumber) && castedNumber >= 0 && castedNumber <= 55) {
+      return castedNumber;
+    } else {
+      return 0;
+    }
   }
 }
