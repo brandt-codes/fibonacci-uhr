@@ -5,17 +5,20 @@
         <div class="w-66 align-top">
           <app-clock-element [isHourSet]="activeHourMap.get('2') || false"
                              [isMinuteSet]="activeMinuteMap.get('2') || false"
+                             data-testid="fib-2"
           ></app-clock-element>
         </div>
         <div class="flex-grow-1">
           <div class="square">
             <app-clock-element [isHourSet]="activeHourMap.get('1.1') || false"
                                [isMinuteSet]="activeMinuteMap.get('1.1') || false"
+                               data-testid="fib-1-1"
             ></app-clock-element>
           </div>
           <div class="square">
             <app-clock-element [isHourSet]="activeHourMap.get('1.2') || false"
                                [isMinuteSet]="activeMinuteMap.get('1.2') || false"
+                               data-testid="fib-1-2"
             ></app-clock-element>
           </div>
         </div>
@@ -23,12 +26,14 @@
       <div class="square">
         <app-clock-element [isHourSet]="activeHourMap.get('3') || false"
                            [isMinuteSet]="activeMinuteMap.get('3') || false"
+                           data-testid="fib-3"
         ></app-clock-element>
       </div>
     </div>
     <div class="w-62 align-top square">
       <app-clock-element [isHourSet]="activeHourMap.get('5') || false"
                          [isMinuteSet]="activeMinuteMap.get('5') || false"
+                         data-testid="fib-5"
       ></app-clock-element>
     </div>
   </div>

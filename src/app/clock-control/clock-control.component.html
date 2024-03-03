@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row mb-2 p-3">
-    <div class="col-12 h1 text-center border-bottom p-1">
+    <div class="col-12 h1 text-center border-bottom p-1" data-testid="display-time">
       {{ displayHour }} : {{ displayMinute }}
     </div>
   </div>
@@ -9,7 +9,7 @@
       <div class="row mt-3 mb-3">
         <div class="col-6">
           Stunde
-          <select [(ngModel)]="hour" (change)="onSelectHour($event)" class="form-select" aria-label="select hour">
+          <select [(ngModel)]="hour" (change)="onSelectHour($event)" class="form-select" aria-label="select hour" data-testid="hour-select">
             <option selected value="0">00</option>
             <option value="1">01</option>
             <option value="2">02</option>
@@ -28,7 +28,7 @@
 
         <div class="col-6">
           Minute
-          <select [(ngModel)]="minute" (change)="onSelectMinute($event)"  class="form-select" aria-label="select minute">
+          <select [(ngModel)]="minute" (change)="onSelectMinute($event)"  class="form-select" aria-label="select minute" data-testid="minute-select">
             <option selected value="0">00</option>
             <option value="5">05</option>
             <option value="10">10</option>
@@ -47,8 +47,8 @@
     </div>
     <div
       class="col-12 col-md-5 col-lg-12 mb-3 mb-md-0 mb-lg-3 text-center d-flex align-content-center flex-wrap justify-content-center">
-      <button (click)="minus5Minutes()" type="button" class="btn btn-danger m-1 p-3">-5 Minuten</button>
-      <button (click)="plus5Minutes()" type="button" class="btn btn-success m-1 p-3">+5 Minuten</button>
+      <button (click)="minus5Minutes()" type="button" class="btn btn-danger m-1 p-3" data-testid="minus-button">-5 Minuten</button>
+      <button (click)="plus5Minutes()" type="button" class="btn btn-success m-1 p-3" data-testid="plus-button">+5 Minuten</button>
     </div>
   </div>
 </div>
