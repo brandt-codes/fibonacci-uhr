@@ -9,8 +9,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "jest",
     "test:watch": "jest --watch",
-    "e2e": "playwright test",
-    "e2e:watch": "playwright test --ui"
+    "e2e": "E2EURL='http://localhost:4200' playwright test",
+    "e2e:watch":"E2EURL='http://localhost:4200' playwright test --ui",
+    "e2e:prod": "E2EURL='http://127.0.0.1:8080' playwright test"
+
   },
   "private": true,
   "dependencies": {
